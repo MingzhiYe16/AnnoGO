@@ -1,0 +1,26 @@
+mkdir -p AnnoGO/{api-gateway,snp-search-service,snp-data-management,snp-reporting-service,frontend,pkg,configs,deployments}
+cd AnnoGO
+
+# Initialize each Go microservice
+services=("api-gateway" "snp-search-service" "snp-data-management" "snp-reporting-service")
+for service in ${services[@]}; do
+    mkdir -p $service/cmd $service/internal/api $service/internal/db $service/internal/model $service/configs
+    echo "package main
+
+import \"fmt\"
+
+func main() {
+    fmt.Println(\"This is the $service service.\")
+}" > $service/main.go
+    (cd $service && go mod init github.com/MingzhiYe16/AnnoGO/$service)
+done
+
+# Initialize the frontend with React (make sure Node.js and npm are installed)
+cd frontend
+npx create-react-app . --template typescript
+cd ..
+
+# Create Docker Compose file for local development
+echo "version: '3.7'
+services:" > docker-compose.yml
+
