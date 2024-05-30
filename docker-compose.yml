@@ -1,2 +1,21 @@
 version: '3.7'
 services:
+  snp-search-service:
+    build:
+      context: ./snp-search-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Map port 8080 of the container to port 8080 on the host
+    environment:
+      - CASSANDRA_HOST=cassandra-db  # Example environment variable
+    depends_on:
+      - cassandra-db  # If your service depends on a Cassandra service running in another container
+
+  cassandra-db:
+    image: "cassandra:latest"
+    ports:
+      - "9042:9042"
+    volumes:
+      - ./cassandra/init.cql:/cassandra-init/init.cql
+    environment:
+      - CASSANDRA_START_RPC=true
