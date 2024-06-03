@@ -1,1 +1,65 @@
-AnnoGO
+# AnnoGO
+
+**Goals**: Develop a web application using Apache Cassandra for storing SNP information, Golang for the backend, and TypeScript with React for the frontend. We'll also use Kubernetes for deployment and consider using gRPC for communication between microservices.
+
+## Step-by-Step Plan
+
+### 1. Set Up the Development Environment
+
+- **Install Go** and set up the Golang environment.
+- **Install Node.js** and set up the environment for React and TypeScript.
+- **Install Docker and Kubernetes** for containerization and orchestration.
+
+### 2. Design the Database Schema
+
+- **Define the schema** for storing SNP information in Apache Cassandra.
+- **Create tables** to store:
+  - Position on the chromosome
+  - SNP ID
+  - Gene ID
+  - Other annotations
+
+### 3. Backend Development (Golang)
+
+- **Use the Gin framework** to create the RESTful API.
+- **Implement gRPC** if needed for internal microservice communication.
+- **Connect to Apache Cassandra** to perform CRUD operations.
+
+### 4. API Development
+
+- **Create endpoints** to search SNP by:
+  - Position
+  - SNP ID
+  - Gene ID
+- **Implement pagination** for search results.
+- **Provide an endpoint** to download SNP information in JSON format.
+
+### 5. Frontend Development (React & TypeScript)
+
+- **Set up the React project** with TypeScript.
+- **Design the UI** for search functionality and displaying results.
+- **Implement pagination** for displaying SNP information.
+- **Add a button** for downloading SNP information.
+
+### 6. Containerization and Orchestration (Kubernetes)
+
+- **Create Dockerfiles** for the backend and frontend services.
+- **Define Kubernetes manifests** for deploying the services.
+- **Set up Kubernetes services**, deployments, and ingress.
+
+### 7. Integration and Testing
+
+- **Integrate the frontend** with the backend API.
+- **Test the application** thoroughly to ensure it meets all requirements.
+- **Perform load testing** to ensure the system can handle 1 billion SNP entries.
+
+### 8. Deployment
+
+- **Deploy the application** to a Kubernetes cluster.
+- **Monitor and scale the application** as needed.
+
+
+## Phase 1
+Focus on step 2 and step 3.
+
+
